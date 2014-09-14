@@ -2,20 +2,19 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.util.Scanner;
 
-import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.border.LineBorder;
@@ -26,16 +25,10 @@ import javax.swing.text.StyledDocument;
 @SuppressWarnings("serial")
 public class MessageDialog extends JDialog {
 	
-	private static BufferedImage icon;
-	private static String aboutText;
-	private static String howToPlayText;
+	private static final String aboutText;
+	private static final String howToPlayText;
 	
 	static {
-		try {
-			icon = ImageIO.read(MessageDialog.class.getResource("resources/icon.png"));
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
 		aboutText = readTextFile("resources/about.txt");
 		howToPlayText = readTextFile("resources/howtoplay.txt");
 	}
@@ -64,30 +57,15 @@ public class MessageDialog extends JDialog {
 			}
 			
 		});
+				
+		JLabel icon = new JLabel(new ImageIcon(getClass().getResource("resources/icon.png")));
+		icon.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		
-		JPanel p1 = new JPanel() {
-
-			public Dimension getPreferredSize() {
-				return new Dimension(icon.getWidth(), icon.getHeight());
-			}
-
-			public void paintComponent(Graphics g) {
-				super.paintComponent(g);
-				g.drawImage(icon, 0, 0, null);
-			}
-			
-		};
+		JPanel p1 = new JPanel();
 		p1.setOpaque(false);
+		p1.add(ok);
 		
-		JPanel p2 = new JPanel();
-		p2.setOpaque(false);
-		p2.add(p1);
-		
-		JPanel p3 = new JPanel();
-		p3.setOpaque(false);
-		p3.add(ok);
-		
-		JPanel p4 = new JPanel(new BorderLayout()) {
+		JPanel p2 = new JPanel(new BorderLayout()) {
 			
 			public void paintComponent(Graphics g) {
 			    if (!isOpaque()) {
@@ -108,13 +86,13 @@ public class MessageDialog extends JDialog {
 			}
 			
 		};
-		p4.setBorder(new LineBorder(Color.GRAY, 4));
-		p4.setBackground(new Color(255, 245, 185));
-		p4.add(p2, BorderLayout.NORTH);
-		p4.add(textPane);
-		p4.add(p3, BorderLayout.SOUTH);
+		p2.setBorder(new LineBorder(Color.GRAY, 4));
+		p2.setBackground(new Color(255, 245, 185));
+		p2.add(icon, BorderLayout.NORTH);
+		p2.add(textPane);
+		p2.add(p1, BorderLayout.SOUTH);
 		
-		add(p4);
+		add(p2);
 		setResizable(false);
 		setUndecorated(true);
 		pack();
