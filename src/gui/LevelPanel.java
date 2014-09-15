@@ -18,6 +18,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 import javax.swing.AbstractAction;
@@ -71,7 +72,7 @@ public class LevelPanel extends JPanel {
 		fix = Applet.newAudioClip(getClass().getResource("resources/fix.au"));
 		setSidePanel();
 		setActions();
-		
+				
 		JPanel p1 = new JPanel();
 		p1.setOpaque(false);
 		p1.add(playPanel);
@@ -81,7 +82,7 @@ public class LevelPanel extends JPanel {
 		scorePanel = new JPanel() {
 			
 			public Dimension getPreferredSize() {
-				return new Dimension(0, 40);
+				return new Dimension(getWidth(), 60);
 			}
 
 			public void paintComponent(Graphics g) {
@@ -95,16 +96,19 @@ public class LevelPanel extends JPanel {
 						s += players[i].getScore() + "";
 					}
 				}
-				
-				BufferedImage scores = new BufferedImage(getWidth(), 40, BufferedImage.TYPE_INT_ARGB);
+				BufferedImage scores = new BufferedImage(getWidth(), 50, BufferedImage.TYPE_INT_ARGB);
 				Graphics2D g2d = (Graphics2D) scores.getGraphics();
 				g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-				g2d.setFont(new Font("Comic sans ms", Font.PLAIN, 20));
 				
+				g2d.setFont(new Font("Comic sans ms", Font.PLAIN, 30));
 				FontMetrics fm = g2d.getFontMetrics();
-				int x = (scores.getWidth() - fm.stringWidth(s)) / 2;
-				int y = (scores.getHeight() + fm.getAscent()) / 2;
-				
+		        Rectangle2D r = fm.getStringBounds(s, g2d);
+		        int x = (int) ((scores.getWidth() - r.getWidth()) / 2);
+		        int y = (int) (scores.getHeight() - r.getHeight()) / 2 + fm.getAscent() - 5;
+
+		        g2d.setPaint(new GradientPaint(0, 0, new Color(255, 232, 100), 0, scores.getHeight(), Color.WHITE));
+		        g2d.fillRect(0, 0, scores.getWidth(), scores.getHeight());
+
 				g2d.setColor(Color.BLACK);
 				g2d.drawString("Scores :    ", x, y);
 				x += fm.stringWidth("Scores :    ");
@@ -118,7 +122,7 @@ public class LevelPanel extends JPanel {
 					g2d.drawString(s, x, y);
 					x += fm.stringWidth(s);
 				}
-				g.drawImage(scores, 0,0,null);
+				g.drawImage(scores, 0, 0, null);
 			}
 			
 		};
@@ -357,7 +361,7 @@ public class LevelPanel extends JPanel {
 	    Graphics2D g2d = (Graphics2D) g;
 	    int w = getWidth();
 	    int h = getHeight();
-	    g2d.setPaint(new GradientPaint(0, 0, Color.WHITE, 0, h, new Color(255, 232, 100)));
+	    g2d.setPaint(new GradientPaint(0, 50, Color.WHITE, 0, h, new Color(255, 232, 100)));
 	    g2d.fillRect(0, 0, w, h);
 	 
 	    setOpaque(false);
