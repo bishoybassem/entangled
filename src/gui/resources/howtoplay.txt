@@ -1,9 +1,9 @@
-Create the longest line you can, rotating 
-your tiles to avoid walls, the center tile 
-& other players' lines. The game ends 
-when all players are unable to place 
-more tiles, and the player with the 
-highest score wins.
+Create the longest line you can, rotating your tiles 
+to avoid walls, the center tile & other players' lines. 
+The game ends when all players are unable to place 
+more tiles, and the player with the highest score wins.
 
-Use the arrow keys or the scroll-wheel to 
-rotate your tile, then hit Enter to place it.
+Use the arrow keys or the scroll-wheel to rotate 
+your tile, then hit Enter to place it. You can choose 
+between your current tile or the spare one shown 
+on the right by clicking Swap.
