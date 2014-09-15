@@ -328,16 +328,21 @@ public abstract class PlayPanel extends JPanel {
 		winner = new BufferedImage(panelWidth, panelHeight, BufferedImage.TYPE_INT_ARGB);
 		Graphics2D g2d = (Graphics2D) winner.getGraphics();
 		g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-		g2d.setFont(new Font("Comic sans ms", Font.BOLD, 25));
+		g2d.setFont(new Font("Comic sans ms", Font.PLAIN, 30));
 		
 		FontMetrics fm = g2d.getFontMetrics();
 		int x = (winner.getWidth() - 250) / 2;
-		int y = (winner.getHeight() - 70) / 2;
-		g2d.setPaint(new GradientPaint(x, y, new Color(210, 210, 210), x, y + 70, new Color(250, 250, 250)));
-		g2d.fillRect(x, y, 250, 70);
-		g2d.setPaint(new GradientPaint(x, y, new Color(215, 168, 134), x + 250, y + 70, new Color(116, 72, 39)));
+		int y = (winner.getHeight() - 80) / 2;
+		
+		g2d.setPaint(new GradientPaint(x, y, new Color(255, 232, 100), x, y + 40, Color.WHITE));
+		g2d.fillRect(x, y, 250, 40);
+		g2d.setPaint(new GradientPaint(x, y + 40, Color.WHITE, x, y + 80, new Color(255, 232, 100)));
+		g2d.fillRect(x, y + 40, 250, 40);
+		
+		g2d.setPaint(new GradientPaint(x, y, new Color(215, 168, 134), x + 250, y + 80, new Color(116, 72, 39)));
 		g2d.setStroke(new BasicStroke(4));
-		g2d.drawRect(x + 2, y + 2, 246, 66);
+		g2d.drawRect(x, y, 250, 80);
+		
 		g2d.setStroke(new BasicStroke(1));
 		if (board.getWinner() != -1) {
 			x = (winner.getWidth() - fm.stringWidth("Player " + (player + 1) + " Wins")) / 2;
@@ -365,7 +370,7 @@ public abstract class PlayPanel extends JPanel {
 	}
 	
 	public Dimension getPreferredSize() {
-		return new Dimension(panelWidth + 30, panelHeight + 15);
+		return new Dimension(panelWidth + 50, panelHeight + 15);
 	}
 	
 	public void paintComponent(Graphics g) {
