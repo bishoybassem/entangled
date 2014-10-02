@@ -87,7 +87,6 @@ public class MessageDialog extends JDialog {
 			
 		};
 		p2.setBorder(new LineBorder(Color.GRAY, 4));
-		p2.setBackground(new Color(255, 245, 185));
 		p2.add(icon, BorderLayout.NORTH);
 		p2.add(textPane);
 		p2.add(p1, BorderLayout.SOUTH);
