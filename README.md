@@ -11,7 +11,7 @@ A standalone Java version of the 2D puzzle game [Entanglement](http://entangleme
 
 ### Download
 
-[Version 1.1](https://github.com/bishoybassem/entanglement/releases/download/v1.1/Entangled.jar)
+[Version 1.1](https://github.com/bishoybassem/entangled/releases/download/v1.1/Entangled.jar)
 
 ### Screenshots
 
