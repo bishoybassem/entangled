@@ -38,7 +38,7 @@ import engine.SquareBoard;
 @SuppressWarnings("serial")
 public class LevelPanel extends JPanel {
 
-	private Entanglement entanglement;
+	private Entangled entanglement;
 	private NewGameDialog newGameDialog;
 	private Board board;
 	private PlayPanel playPanel;
@@ -53,7 +53,7 @@ public class LevelPanel extends JPanel {
 
 	private boolean stop;
 	
-	public LevelPanel(Entanglement entanglement, NewGameDialog newGameDialog, int size, int openings, boolean square, Player[] players, double height) {
+	public LevelPanel(Entangled entanglement, NewGameDialog newGameDialog, int size, int openings, boolean square, Player[] players, double height) {
 		super(new BorderLayout());
 		this.entanglement = entanglement;
 		this.newGameDialog = newGameDialog;

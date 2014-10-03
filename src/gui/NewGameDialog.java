@@ -39,7 +39,7 @@ public class NewGameDialog extends JDialog {
 	private boolean square;
 	private JPanel mainPanel;
 		
-	public NewGameDialog(final Entanglement entanglement) {
+	public NewGameDialog(final Entangled entanglement) {
 		super(entanglement, true);
 		first = true;
 		
@@ -83,15 +83,15 @@ public class NewGameDialog extends JDialog {
 				g2d.setFont(new Font("Comic sans ms", Font.PLAIN, 50));
 				FontMetrics fm = g2d.getFontMetrics();
 				
-		        Rectangle2D r = fm.getStringBounds("ENTANGLEMENT", g2d);
+		        Rectangle2D r = fm.getStringBounds("ENTANGLED", g2d);
 		        int x = (int) (getWidth() - r.getWidth()) / 2;
 		        int y = (int) (getHeight() - r.getHeight()) / 2 + fm.getAscent();
 
 		        g.setColor(Color.WHITE);
 		        g.setColor(new Color(255, 232, 100));
-		        g.drawString("ENTANGLEMENT", x - 1, y + 2);
+		        g.drawString("ENTANGLED", x - 1, y + 2);
 		        g.setColor(Color.DARK_GRAY);
-		        g.drawString("ENTANGLEMENT", x, y);
+		        g.drawString("ENTANGLED", x, y);
 			}
 			
 			public Dimension getPreferredSize() {

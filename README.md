@@ -1,4 +1,4 @@
-# Entanglement
+# Entangled
 
 A standalone Java version of the 2D puzzle game [Entanglement](http://entanglement.gopherwoodstudios.com/). The game's objective is to create the longest line possible, through rotating the given tiles and avoiding dead ends.
 

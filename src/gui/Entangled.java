@@ -10,7 +10,7 @@ import javax.swing.UIManager;
 import engine.Player;
 
 @SuppressWarnings("serial")
-public class Entanglement extends JFrame {
+public class Entangled extends JFrame {
 	
 	private int size;
 	private int openings;
@@ -19,7 +19,7 @@ public class Entanglement extends JFrame {
 	private LevelPanel current;
 	private NewGameDialog newGameDialog;
 	
-	public Entanglement() {
+	public Entangled() {
 		super("Entanglement");
 		
 		UIManager.put("Label.font", new Font("Comic sans ms", Font.PLAIN, 17));
@@ -65,7 +65,7 @@ public class Entanglement extends JFrame {
 	}
 	
 	public static void main(String[] args) {
-		new Entanglement();
+		new Entangled();
 	}
 
 }
